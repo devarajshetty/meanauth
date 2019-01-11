@@ -1,0 +1,31 @@
+{
+  "name": "meanauth",
+  "version": "1.0.0",
+  "description": "meanauth",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "^1.18.3",
+    "cors": "*",
+    "express": "^4.16.4",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "nodemon": "^1.18.9",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devarajshetty/meanauth.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devarajshetty/meanauth/issues"
+  },
+  "homepage": "https://github.com/devarajshetty/meanauth#readme"
+}
