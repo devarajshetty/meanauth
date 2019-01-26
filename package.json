@@ -16,7 +16,9 @@
     "mongoose": "*",
     "nodemon": "^1.18.9",
     "passport": "*",
-    "passport-jwt": "*"
+    "passport-jwt": "*",
+    "to": "^0.2.9",
+    "update": "^0.7.4"
   },
   "author": "Brad Traversy",
   "license": "ISC"
