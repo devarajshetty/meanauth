@@ -10,7 +10,7 @@ export class AuthService
 {
   authToken: any;
   user: any;
-
+  readonly baseURL = 'http://localhost:3000/users/';
   constructor(private http:Http) { }
 
   registerUser(user){
@@ -22,7 +22,7 @@ export class AuthService
   UpdateUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/users/UpdateUser', user,{headers: headers})
+    return this.http.put(this.baseURL + `5c56941747a41873120b1d6c`, user,{headers: headers})
       .map(res => res.json());
   }
   authenticateUser(user){

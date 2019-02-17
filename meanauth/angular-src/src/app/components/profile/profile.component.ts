@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ValidateService } from '../../services/validate.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-profile',
@@ -13,31 +15,27 @@ export class ProfileComponent implements OnInit {
 username: String;
 email: String;
 password: String;
+_id : String;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService:AuthService,private flashMessage: FlashMessagesService, private validateService: ValidateService,private router:Router) { }
 
   onUpdateSubmit(){
   const updateuser ={
   name: this.name,
   email: this.email,
-  username: this.username
+  username: this.username,
+  _id: this._id,
+   
   }
 
-  if(!this.validateService.validateRegister(updateuser)){
-  this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
-  return false;
-  }
-  if(!this.validateService.validateEmail(updateuser.email)){
-  this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
-  return false;
-  }
+  
  this.authService.UpdateUser(updateuser).subscribe(data => {
       if(data.success){
         this.flashMessage.show('You are now Updated', {cssClass: 'alert-success', timeout: 3000});
-        this.router.navigate(['/login']);
+       this.router.navigate(['/profile']);
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
-        this.router.navigate(['/register']);
+       this.router.navigate(['/profile']);
       }
     });
 }

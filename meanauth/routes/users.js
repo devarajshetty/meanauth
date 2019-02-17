@@ -23,6 +23,24 @@ router.post('/register', (req, res, next) => {
   });
 });
 
+router.put('/:id', (req, res, next) => {
+   
+
+ 
+     if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No record with given id : ${req.params.id}`);
+
+    var emp = {
+        name: req.body.name,
+    email: req.body.email,
+    username: req.body.username
+    };
+    User.findByIdAndUpdate(req.params.id, { $set: emp }, { new: true }, (err, doc) => {
+        if (!err) { res.json({success: true, msg:'User registered'}); }
+        else { res.json({success: false, msg:'Failed to register user'});console.log('Error in Employee Update :' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
   const username = req.body.username;
